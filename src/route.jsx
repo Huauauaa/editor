@@ -2,14 +2,21 @@ import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
+import WangEditorExample from './wang-editor/Example';
 
 const routers = [
   {
     path: '/',
     exact: true,
     name: 'Home',
-    component: Home
-  }
+    component: Home,
+  },
+  {
+    path: '/wangeditor',
+    exact: true,
+    name: 'wangeditor',
+    component: WangEditorExample,
+  },
 ];
 
 export function renderRouters() {

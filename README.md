@@ -5,14 +5,18 @@
 - [react-quill](https://github.com/zenoamaro/react-quill)
 - [braft-editor](https://www.yuque.com/braft-editor/be/qg394y)
 - [draftjs](https://draftjs.org/)
+- [slate](https://github.com/ianstormtaylor/slate)
 
+## TODO
 
+- slate examples
 
 ## Problems
 
 ### braft-editor
 
 1. `global is undefined`
+
 ```
 <script>
   const global = globalThis;

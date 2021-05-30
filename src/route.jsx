@@ -5,6 +5,8 @@ import Home from './Home';
 import WangEditorExample from './wang-editor/Example';
 import ReactQuillExample from './react-quill/Example';
 import BraftEditorExample from './braft-editor/Example';
+import PlainTextExample from './slate/PlainTextExample';
+import RichTextExample from './slate/RichTextExample';
 
 const routers = [
   {
@@ -31,6 +33,23 @@ const routers = [
     name: 'braft-editor',
     component: BraftEditorExample,
   },
+  {
+    path: '/slate',
+    exact: true,
+    name: 'slate',
+  },
+  {
+    path: '/slate/plain-text',
+    exact: true,
+    name: 'plain-text',
+    component: PlainTextExample,
+  },
+  {
+    path: '/slate/rich-text',
+    exact: true,
+    name: 'rich-text',
+    component: RichTextExample,
+  },
 ];
 
 export function renderRouters() {
@@ -50,7 +69,7 @@ export function renderRouters() {
         <Switch>
           {routers.map((router, index) => (
             <Route path={router.path} exact={router.exact} key={index}>
-              <router.component />
+              {router.component && <router.component />}
             </Route>
           ))}
         </Switch>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import WangEditorExample from './wang-editor/Example';
 import ReactQuillExample from './react-quill/Example';
+import BraftEditorExample from './braft-editor/Example';
 
 const routers = [
   {
@@ -23,6 +24,12 @@ const routers = [
     exact: true,
     name: 'react-quill',
     component: ReactQuillExample,
+  },
+  {
+    path: '/braft-editor',
+    exact: true,
+    name: 'braft-editor',
+    component: BraftEditorExample,
   },
 ];
 

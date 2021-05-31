@@ -5,10 +5,11 @@ import Home from './Home';
 import WangEditorExample from './wang-editor/Example';
 import ReactQuillExample from './react-quill/Example';
 import BraftEditorExample from './braft-editor/Example';
+import SlateIndex from './slate/Index';
 import PlainTextExample from './slate/PlainTextExample';
 import RichTextExample from './slate/RichTextExample';
 
-const routers = [
+const ROUTERS = [
   {
     path: '/',
     exact: true,
@@ -17,13 +18,11 @@ const routers = [
   },
   {
     path: '/wangeditor',
-    exact: true,
     name: 'wangeditor',
     component: WangEditorExample,
   },
   {
     path: '/react-quill',
-    exact: true,
     name: 'react-quill',
     component: ReactQuillExample,
   },
@@ -35,45 +34,56 @@ const routers = [
   },
   {
     path: '/slate',
-    exact: true,
     name: 'slate',
-  },
-  {
-    path: '/slate/plain-text',
-    exact: true,
-    name: 'plain-text',
-    component: PlainTextExample,
-  },
-  {
-    path: '/slate/rich-text',
-    exact: true,
-    name: 'rich-text',
-    component: RichTextExample,
+    component: SlateIndex,
+    children: [
+      {
+        path: '/slate/plain-text',
+        name: 'plain-text',
+        exact: true,
+        component: PlainTextExample,
+      },
+      {
+        path: '/slate/rich-text',
+        name: 'rich-text',
+        exact: true,
+        component: RichTextExample,
+      },
+    ],
   },
 ];
+
+function renderNav(routers = []) {
+  return (
+    <ul>
+      {routers.map((router) => (
+        <li key={router.path}>
+          <Link to={router.path}>{router.name}</Link>
+          {renderNav(router.children)}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function renderRoute(routers = []) {
+  return (
+    <Switch>
+      {routers.map((router) => (
+        <Route path={router.path} exact={router.exact} key={router.path}>
+          {router.component && <router.component />}
+          {renderRoute(router.children)}
+        </Route>
+      ))}
+    </Switch>
+  );
+}
 
 export function renderRouters() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            {routers.map((router, index) => (
-              <li key={index}>
-                <Link to={router.path}>{router.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <Switch>
-          {routers.map((router, index) => (
-            <Route path={router.path} exact={router.exact} key={index}>
-              {router.component && <router.component />}
-            </Route>
-          ))}
-        </Switch>
-      </div>
+      {renderNav(ROUTERS)}
+      {renderRoute(ROUTERS)}
     </Router>
   );
 }

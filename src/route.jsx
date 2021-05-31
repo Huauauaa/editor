@@ -10,6 +10,7 @@ import PlainTextExample from './slate/PlainTextExample';
 import RichTextExample from './slate/RichTextExample';
 import MarkdownPreviewExample from './slate/MarkdownPreviewExample';
 import LinkExample from './slate/LinkExample';
+import TablesExample from './slate/TablesExample';
 
 const ROUTERS = [
   {
@@ -62,6 +63,12 @@ const ROUTERS = [
         name: 'link',
         exact: true,
         component: LinkExample,
+      },
+      {
+        path: '/slate/table',
+        name: 'table',
+        exact: true,
+        component: TablesExample,
       },
     ],
   },

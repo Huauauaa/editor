@@ -8,6 +8,7 @@ import BraftEditorExample from './braft-editor/Example';
 import SlateIndex from './slate/Index';
 import PlainTextExample from './slate/PlainTextExample';
 import RichTextExample from './slate/RichTextExample';
+import MarkdownPreviewExample from './slate/MarkdownPreviewExample';
 
 const ROUTERS = [
   {
@@ -48,6 +49,12 @@ const ROUTERS = [
         name: 'rich-text',
         exact: true,
         component: RichTextExample,
+      },
+      {
+        path: '/slate/markdown-preview',
+        name: 'markdown-preview',
+        exact: true,
+        component: MarkdownPreviewExample,
       },
     ],
   },

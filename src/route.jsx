@@ -9,6 +9,7 @@ import SlateIndex from './slate/Index';
 import PlainTextExample from './slate/PlainTextExample';
 import RichTextExample from './slate/RichTextExample';
 import MarkdownPreviewExample from './slate/MarkdownPreviewExample';
+import LinkExample from './slate/LinkExample';
 
 const ROUTERS = [
   {
@@ -55,6 +56,12 @@ const ROUTERS = [
         name: 'markdown-preview',
         exact: true,
         component: MarkdownPreviewExample,
+      },
+      {
+        path: '/slate/link',
+        name: 'link',
+        exact: true,
+        component: LinkExample,
       },
     ],
   },

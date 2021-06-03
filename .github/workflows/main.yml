@@ -37,6 +37,9 @@ jobs:
           npm run build
           cd dist
           git init
-          git add -A
-          git commit -m 'deploy'
-          git push -f git@github.com:Huauauaa/editor.git master:gh-pages
+          
+      - run: git add -A
+        
+      - run: git commit -m 'deploy'
+        
+      - run: git push -f git@github.com:Huauauaa/editor.git main:gh-pages

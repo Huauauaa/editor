@@ -26,8 +26,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           git config --global init.defaultBranch main
-          git config user.email "huauauaa@github.com"
-          git config user.name "huauauaa"
+          git config --global user.email "huauauaa@github.com"
+          git config --global user.name "huauauaa"
 
       - name: insall
         run: npm install

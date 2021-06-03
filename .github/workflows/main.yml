@@ -25,6 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - run: |
+          git config --global init.defaultBranch main
           git config user.email "huauauaa@github.com"
           git config user.name "huauauaa"
 

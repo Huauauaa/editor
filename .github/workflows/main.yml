@@ -24,22 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - run: |
-          git config --global init.defaultBranch main
-          git config --global user.email "huauauaa@github.com"
-          git config --global user.name "huauauaa"
+        with:
+          persist-credentials: false
 
-      - name: insall
+      - name: Insall
         run: npm install
       
-      - name: build
-        run: |
-          npm run build
-          cd dist
-          git init
+      - name: Build
+        run: npm run build
           
-      - run: git add -A
-        
-      - run: git commit -m 'deploy'
-        
-      - run: git push -f git@github.com:Huauauaa/editor.git main:gh-pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
